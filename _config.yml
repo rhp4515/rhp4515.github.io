@@ -1,0 +1,49 @@
+title: "Hari Prasath Raman"
+description: "Engineering manager building resilient, self-evolving platforms."
+baseurl: ""
+url: "https://rhp4515.github.io"
+
+remote_theme: alshedivat/al-folio@latest
+
+plugins:
+  - jekyll-remote-theme
+  - jekyll-include-cache
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+permalink: pretty
+markdown: kramdown
+
+author:
+  name: "Hari Prasath Raman"
+  email: "rhp4515@duck.com"
+  role: "Engineering Manager"
+  pronouns: ""
+  employer: "Bloomberg LP"
+  bio: "Focused on building scalable, self-evolving systems that empower teams and technology."
+
+social:
+  github: "rhp4515"
+  linkedin: "hariprar"
+
+navbar:
+  - title: "Home"
+    url: /
+  - title: "Resume"
+    url: /data/resume.pdf
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:path/
+
+sass:
+  style: compressed
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      comments: false
