@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ site.title }}</title>
+    <meta name="description" content="{{ site.description }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg: #161826;
+            --surface: #232532;
+            --text: #e9e9ed;
+            --accent: #9184d9;
+            --divider: color-mix(in srgb, #e9e9ed 16%, transparent);
+
+            --neutral-100: #f3f5fe;
+            --neutral-200: #e4e7f5;
+            --neutral-300: #cfd3e5;
+            --neutral-400: #b2b6ca;
+            --neutral-500: #9397ab;
+            --neutral-600: #75798c;
+            --neutral-700: #595d6c;
+            --neutral-800: #3f424d;
+            --neutral-900: #292b31;
+
+            --accent-100: #f5f4ff;
+            --accent-200: #e7e5fe;
+            --accent-300: #d2cefd;
+            --accent-500: #968ae0;
+            --accent-700: #5d5294;
+            --accent-800: #423a6a;
+            --accent-900: #2b2741;
+
+            --section-glow-start: #262a60;
+            --section-glow-end: #353b80;
+
+            --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+            --font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
+
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 14px;
+
+            --shadow-sm: 0 0 0 1px var(--neutral-800);
+
+            --duration-fast: 150ms;
+            --space-page: clamp(16px, 4vw, 24px);
+        }
+
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-sans);
+            font-size: 15px;
+            line-height: 1.55;
+        }
+
+        h1, h2, h3 { font-family: var(--font-sans); font-weight: 500; line-height: 1.12; letter-spacing: -0.015em; margin: 0; }
+        p { margin: 0; }
+        a { color: var(--accent-300); text-decoration: none; }
+        a:hover, a:focus-visible { color: var(--accent-200); }
+        :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+        ::selection { background: color-mix(in srgb, var(--accent) 30%, transparent); }
+        dl, dd { margin: 0; }
+
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            top: 0;
+            background: var(--accent);
+            color: var(--bg);
+            padding: 10px 16px;
+            border-radius: var(--radius-sm);
+            z-index: 100;
+        }
+        .skip-link:focus { left: var(--space-page); top: var(--space-page); }
+
+        .page {
+            min-height: 100vh;
+            padding: 0 var(--space-page) 96px;
+        }
+        .page-inner { max-width: 1080px; margin: 0 auto; }
+
+        /* — mono "route" labels, used as both decor and section headings — */
+        .route {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            font-family: var(--font-mono);
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: normal;
+            margin: 0 0 12px;
+        }
+        .method {
+            padding: 3px 8px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--accent-700);
+            color: var(--accent-300);
+            font-size: 11.5px;
+        }
+        .method--post { border-color: var(--accent-500); color: var(--accent-200); }
+        .route-path { color: var(--neutral-300); }
+        .route-note { color: var(--neutral-600); }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px; height: 1px;
+            padding: 0; margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* — nav — */
+        .site-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--neutral-900);
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 13px;
+        }
+        .brand-name { font-family: var(--font-sans); font-weight: 500; font-size: 15px; }
+        .brand-sep { color: var(--neutral-600); }
+        .brand-version { font-family: var(--font-mono); font-size: 12.5px; color: var(--neutral-400); }
+        .nav-links {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+            font-family: var(--font-mono);
+            font-size: 12.5px;
+        }
+        .nav-link {
+            display: flex;
+            gap: 8px;
+            padding: 6px 10px;
+            border-radius: var(--radius-sm);
+            color: var(--neutral-300);
+            transition: background var(--duration-fast) ease, color var(--duration-fast) ease;
+        }
+        .nav-link:hover, .nav-link:focus-visible { background: var(--neutral-900); color: var(--text); }
+        .nav-link .method { color: var(--accent-300); border: none; padding: 0; }
+        .nav-link--cta { border: 1px solid var(--accent-700); color: var(--accent-200); }
+        .nav-link--cta:hover, .nav-link--cta:focus-visible { background: var(--accent-900); color: var(--accent-100); }
+        .nav-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12.5px;
+            color: var(--neutral-300);
+        }
+        .status-dot {
+            display: inline-block;
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* — profile hero — */
+        .profile { padding: 72px 0 56px; max-width: 760px; }
+        .profile .route { margin-bottom: 24px; }
+        .eyebrow {
+            font-size: 12.5px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--accent-300);
+            margin-bottom: 20px;
+        }
+        .profile h1 {
+            font-size: clamp(40px, 7vw, 68px);
+            line-height: 1.02;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+        }
+        .profile .lede {
+            font-size: clamp(18px, 2.4vw, 22px);
+            line-height: 1.5;
+            color: var(--neutral-200);
+            margin-bottom: 16px;
+            text-wrap: pretty;
+        }
+        .profile .sub {
+            font-size: 15.5px;
+            line-height: 1.65;
+            color: var(--neutral-400);
+            text-wrap: pretty;
+        }
+
+        /* — pipeline diagram — */
+        .pipeline { padding: 0 0 96px; }
+        .pipeline-grid {
+            display: grid;
+            grid-template-columns: minmax(0,1fr) 40px minmax(0,1.3fr) 40px minmax(0,1fr) 40px minmax(0,1fr);
+            align-items: stretch;
+        }
+        .pipeline-group {
+            display: grid;
+            gap: 10px;
+            align-content: center;
+        }
+        .pipeline-group-label {
+            font-size: 11px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--neutral-500);
+            margin-bottom: 4px;
+        }
+        .pipeline-chip {
+            padding: 12px 14px;
+            border: 1px solid var(--neutral-800);
+            border-radius: var(--radius-md);
+            font-size: 13.5px;
+            color: var(--neutral-200);
+            font-family: var(--font-mono);
+        }
+        .pipeline-core {
+            padding: 22px;
+            border: 1px solid var(--accent-700);
+            border-radius: var(--radius-lg);
+            background: linear-gradient(160deg, var(--section-glow-start) 0%, var(--section-glow-end) 100%);
+            display: grid;
+            align-content: center;
+            gap: 8px;
+        }
+        .pipeline-core-label {
+            font-size: 11px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--accent-300);
+        }
+        .pipeline-core-title { font-size: 18px; color: var(--neutral-100); }
+        .pipeline-core-detail { font-size: 13px; line-height: 1.5; color: var(--neutral-200); }
+        .pipeline-core-metric {
+            margin-top: 8px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--accent-200);
+        }
+        .flow-arrow {
+            display: flex;
+            align-items: center;
+        }
+        .flow-arrow::before {
+            content: "";
+            width: 100%;
+            height: 2px;
+            background-image: repeating-linear-gradient(90deg, var(--accent) 0 10px, transparent 10px 28px);
+            animation: flowX 1.1s linear infinite;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin-top: 32px;
+        }
+        .stat-tile {
+            padding: 16px;
+            border: 1px solid var(--neutral-800);
+            border-radius: var(--radius-md);
+            background: var(--surface);
+        }
+        .stat-label {
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--neutral-500);
+        }
+        .stat-value { font-size: 28px; margin-top: 6px; }
+
+        /* — section shells — */
+        section[id] { padding: 0 0 96px; scroll-margin-top: 24px; }
+        section[id]:last-of-type { padding-bottom: 0; }
+        .section-summary {
+            font-size: 15px;
+            color: var(--neutral-400);
+            margin: 0 0 32px;
+            max-width: 640px;
+        }
+
+        /* — bordered card shell (trace, operating log, toolkit, education) — */
+        .panel {
+            border: 1px solid var(--neutral-800);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+        .panel + .panel { margin-top: 20px; }
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            padding: 14px 20px;
+            background: var(--surface);
+            border-bottom: 1px solid var(--neutral-800);
+        }
+        .panel-header-title { font-size: 15px; }
+        .panel-header-meta { font-family: var(--font-mono); font-size: 12px; color: var(--neutral-500); }
+
+        /* — trace / timeline bar chart — */
+        .trace-body { padding: 20px 20px 8px; }
+        .trace-axis {
+            display: grid;
+            grid-template-columns: minmax(0, 240px) minmax(0, 1fr);
+            gap: 0 20px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--neutral-600);
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--neutral-900);
+        }
+        .trace-axis-years { display: flex; justify-content: space-between; }
+        .trace-row {
+            display: grid;
+            grid-template-columns: minmax(0, 240px) minmax(0, 1fr);
+            gap: 0 20px;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--neutral-900);
+            color: inherit;
+        }
+        .trace-row:last-child { border-bottom: none; }
+        .trace-role-title { font-size: 14.5px; font-weight: 500; }
+        .trace-role-org { font-size: 12.5px; color: var(--neutral-500); margin-top: 2px; }
+        .trace-track { position: relative; height: 22px; }
+        .trace-bar {
+            position: absolute;
+            top: 0;
+            height: 22px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            padding: 0 8px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        .trace-bar--strong { background: var(--accent-700); border: 1px solid var(--accent-500); color: var(--accent-100); }
+        .trace-bar--accent { background: var(--accent-800); border: 1px solid var(--accent-700); color: var(--accent-200); }
+        .trace-bar--muted { background: var(--neutral-800); border: 1px solid var(--neutral-700); color: var(--neutral-300); }
+        .trace-bar--dim { background: var(--neutral-800); border: 1px solid var(--neutral-700); }
+        .trace-bar--dashed { background: var(--neutral-900); border: 1px dashed var(--neutral-700); color: var(--neutral-400); }
+        .trace-bar-label {
+            position: absolute;
+            top: 3px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--neutral-500);
+        }
+        .trace-bar-text-short { display: none; }
+
+        /* — role cards — */
+        .roles { display: grid; gap: 16px; }
+        .role-card { border: 1px solid var(--neutral-800); border-radius: var(--radius-lg); overflow: hidden; scroll-margin-top: 24px; }
+        .role-card--current { border-color: var(--accent-800); }
+        .role-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+            padding: 14px 20px;
+            background: var(--surface);
+            border-bottom: 1px solid var(--neutral-800);
+        }
+        .role-title { font-size: 17px; }
+        .role-dates { font-family: var(--font-mono); font-size: 12.5px; color: var(--accent-300); }
+        .role-facts {
+            display: grid;
+            grid-template-columns: max-content minmax(0, 1fr);
+            gap: 12px 24px;
+            padding: 20px;
+            font-size: 14.5px;
+            line-height: 1.6;
+        }
+        .role-facts dt { font-family: var(--font-mono); font-size: 13px; color: var(--neutral-500); }
+        .role-facts dd { color: var(--neutral-200); }
+
+        /* — leadership operating log — */
+        .log-entry {
+            display: grid;
+            grid-template-columns: 92px minmax(0, 1fr);
+            gap: 16px 20px;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--neutral-900);
+            font-size: 14.5px;
+            line-height: 1.6;
+        }
+        .log-entry:last-child { border-bottom: none; }
+        .log-tag { font-family: var(--font-mono); font-size: 11px; padding-top: 5px; }
+        .log-tag--accent { color: var(--accent-300); }
+        .log-tag--muted { color: var(--neutral-400); }
+        .log-title { font-weight: 500; margin-bottom: 4px; }
+        .log-body { margin: 0; color: var(--neutral-400); text-wrap: pretty; }
+
+        /* — work / project cards — */
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+        }
+        .work-card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+        .work-kicker { font-family: var(--font-mono); font-size: 11px; color: var(--accent-300); margin-bottom: 12px; }
+        .work-card h3 { font-size: 17px; margin-bottom: 10px; }
+        .work-card p { font-size: 14px; line-height: 1.6; color: var(--neutral-400); text-wrap: pretty; }
+
+        /* — toolkit + education — */
+        .toolkit-education {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        .toolkit-facts {
+            display: grid;
+            grid-template-columns: max-content minmax(0, 1fr);
+            gap: 14px 24px;
+            padding: 18px 20px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .toolkit-facts dt { font-family: var(--font-mono); font-size: 13px; color: var(--accent-300); }
+        .toolkit-facts dd { color: var(--neutral-200); }
+        .degree-list { display: grid; gap: 18px; padding: 18px 20px; font-size: 14px; line-height: 1.6; }
+        .degree-name { font-weight: 500; color: var(--text); }
+        .degree-meta { color: var(--neutral-400); }
+        .publications { padding-top: 14px; border-top: 1px solid var(--neutral-900); }
+        .publications-label { font-family: var(--font-mono); font-size: 11px; color: var(--neutral-500); margin-bottom: 10px; }
+        .publications p { margin: 0 0 10px; color: var(--neutral-300); text-wrap: pretty; }
+        .publications p:last-child { margin-bottom: 0; }
+        .publications strong { color: var(--text); font-weight: 500; }
+
+        /* — contact — */
+        .contact-divider {
+            height: 1px;
+            margin-bottom: 56px;
+            background: linear-gradient(to right, transparent, var(--divider) 48px, var(--divider) calc(100% - 48px), transparent);
+        }
+        .contact h2 {
+            font-size: clamp(28px, 4vw, 40px);
+            line-height: 1.12;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            max-width: 620px;
+        }
+        .contact-lede {
+            font-size: 15.5px;
+            line-height: 1.65;
+            color: var(--neutral-400);
+            margin-bottom: 28px;
+            max-width: 620px;
+            text-wrap: pretty;
+        }
+        .contact-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 11px 20px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--neutral-800);
+            color: var(--neutral-300);
+            transition: border-color var(--duration-fast) ease, color var(--duration-fast) ease, background var(--duration-fast) ease;
+        }
+        .btn:hover, .btn:focus-visible { border-color: var(--neutral-600); color: var(--text); }
+        .btn-primary { border-color: var(--accent); color: var(--accent-300); }
+        .btn-primary:hover, .btn-primary:focus-visible { background: var(--accent-900); color: var(--accent-200); }
+
+        .site-footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 64px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--neutral-600);
+        }
+
+        @keyframes flowX { to { background-position: 28px 0; } }
+        @keyframes flowY { to { background-position: 0 28px; } }
+        @keyframes pulse { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
+
+        @media (max-width: 900px) {
+            .pipeline-grid { grid-template-columns: 1fr; gap: 20px; }
+            .flow-arrow { justify-content: center; }
+            .flow-arrow::before { width: 2px; height: 28px; background-image: repeating-linear-gradient(180deg, var(--accent) 0 10px, transparent 10px 28px); animation: flowY 1.1s linear infinite; }
+        }
+
+        @media (max-width: 640px) {
+            .profile { padding: 48px 0 40px; }
+            .trace-axis, .trace-row { grid-template-columns: 1fr; gap: 6px; }
+            .trace-axis-years { display: none; }
+            .trace-track { margin-top: 4px; }
+            .role-facts, .toolkit-facts { grid-template-columns: 1fr; gap: 4px 0; }
+            .role-facts dt, .toolkit-facts dt { margin-top: 8px; }
+            .log-entry { grid-template-columns: 1fr; gap: 4px; }
+            .trace-bar { overflow: visible; }
+            .trace-bar-text-full { display: none; }
+            .trace-bar-text-short { display: inline; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .status-dot, .flow-arrow::before { animation: none; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to content</a>
+    <div class="page">
+        <div class="page-inner">
+
+            <header class="site-nav">
+                <div class="brand">
+                    <span class="brand-name">{{ site.brand_name }}</span>
+                    <span class="brand-sep">/</span>
+                    <span class="brand-version">{{ site.brand_version }}</span>
+                </div>
+                <nav class="nav-links" aria-label="Main navigation">
+                    <a class="nav-link" href="#experience"><span class="method">GET</span>/experience</a>
+                    <a class="nav-link" href="#leadership"><span class="method">GET</span>/leadership</a>
+                    <a class="nav-link" href="#work"><span class="method">GET</span>/work</a>
+                    <a class="nav-link" href="#education"><span class="method">GET</span>/education</a>
+                    <a class="nav-link" href="#contact"><span class="method">POST</span>/contact</a>
+                    <a class="nav-link nav-link--cta" href="data/resume.pdf" download><span class="method">GET</span>/resume.pdf</a>
+                </nav>
+                <div class="nav-status">
+                    <span class="status-dot" aria-hidden="true"></span>
+                    <span>Operational · {{ uptime_label }} uptime</span>
+                </div>
+            </header>
+
+            <main id="main">
+                <section class="profile" id="profile" aria-labelledby="profile-name">
+                    <p class="route">
+                        <span class="method">GET</span>
+                        <span class="route-path">/profile</span>
+                        <span class="route-note">→ 200 OK</span>
+                    </p>
+                    <p class="eyebrow">{{ profile.eyebrow }}</p>
+                    <h1 id="profile-name">{{ profile.name }}</h1>
+                    <p class="lede">{{ profile.lede }}</p>
+                    <p class="sub">{{ profile.sub }}</p>
+                </section>
+
+                <section class="pipeline" aria-labelledby="pipeline-heading">
+                    <h2 id="pipeline-heading" class="visually-hidden">Data ingestion pipeline overview</h2>
+                    <div class="pipeline-grid">
+                        <div class="pipeline-group">
+                            <div class="pipeline-group-label">Sources</div>
+{% for chip in pipeline.sources %}
+                            <div class="pipeline-chip">{{ chip }}</div>
+{% endfor %}
+                        </div>
+                        <div class="flow-arrow" aria-hidden="true"></div>
+                        <div class="pipeline-core">
+                            <div class="pipeline-core-label">{{ pipeline.core.label }}</div>
+                            <div class="pipeline-core-title">{{ pipeline.core.title }}</div>
+                            <div class="pipeline-core-detail">{{ pipeline.core.detail }}</div>
+                            <div class="pipeline-core-metric">{{ pipeline.core.metric }}</div>
+                        </div>
+                        <div class="flow-arrow" aria-hidden="true"></div>
+                        <div class="pipeline-group">
+                            <div class="pipeline-group-label">Bus</div>
+{% for chip in pipeline.bus %}
+                            <div class="pipeline-chip">{{ chip }}</div>
+{% endfor %}
+                        </div>
+                        <div class="flow-arrow" aria-hidden="true"></div>
+                        <div class="pipeline-group">
+                            <div class="pipeline-group-label">Consumers</div>
+{% for chip in pipeline.consumers %}
+                            <div class="pipeline-chip">{{ chip }}</div>
+{% endfor %}
+                        </div>
+                    </div>
+                    <div class="stats">
+{% for stat in pipeline.stats %}
+                        <div class="stat-tile"><div class="stat-label">{{ stat.label }}</div><div class="stat-value">{{ stat.value }}</div></div>
+{% endfor %}
+                    </div>
+                </section>
+
+                <section id="experience">
+                    <h2 class="route">
+                        <span class="method">GET</span>
+                        <span class="route-path">/experience</span>
+                        <span class="route-note">?order=desc</span>
+                    </h2>
+                    <p class="section-summary">{{ experience.summary }}</p>
+
+                    <div class="panel">
+                        <div class="panel-header">
+                            <div class="panel-header-title">Trace · career.root</div>
+                            <div class="panel-header-meta">{{ trace_meta }}</div>
+                        </div>
+                        <div class="trace-body">
+                            <div class="trace-axis">
+                                <span>span</span>
+                                <div class="trace-axis-years">
+{% for year in axis_ticks %}
+                                    <span>{{ year }}</span>
+{% endfor %}
+                                </div>
+                            </div>
+{% for span in trace_spans %}
+                            <a href="#{{ span.id }}" class="trace-row">
+                                <div><div class="trace-role-title">{{ span.short_title }}</div><div class="trace-role-org">{{ span.trace_org }}</div></div>
+                                <div class="trace-track">
+{% if span.outside_label %}
+                                    <div class="trace-bar trace-bar--{{ span.variant }}" style="left: {{ span.left_pct }}%; width: {{ span.width_pct }}%; min-width: 6px;"></div>
+                                    <span class="trace-bar-label" style="left: calc({{ span.left_pct + span.width_pct }}% + 8px);">{{ span.duration }}</span>
+{% elif span.end is none %}
+                                    <div class="trace-bar trace-bar--{{ span.variant }}" style="left: {{ span.left_pct }}%; width: {{ span.width_pct }}%;"><span class="trace-bar-text-full">{{ span.label_full }}</span><span class="trace-bar-text-short">{{ span.label_short }}</span></div>
+{% else %}
+                                    <div class="trace-bar trace-bar--{{ span.variant }}" style="left: {{ span.left_pct }}%; width: {{ span.width_pct }}%;">{{ span.duration }}</div>
+{% endif %}
+                                </div>
+                            </a>
+{% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="roles">
+{% for role in role_cards %}
+                        <article id="{{ role.id }}" class="role-card{% if role.current %} role-card--current{% endif %}">
+                            <div class="role-header">
+                                <div class="role-title">{{ role.title }}</div>
+                                <div class="role-dates">{{ role.dates_text }}</div>
+                            </div>
+                            <dl class="role-facts">
+{% for label, text in role.facts %}
+                                <dt>{{ label }}</dt><dd>{{ text }}</dd>
+{% endfor %}
+                            </dl>
+                        </article>
+{% endfor %}
+                    </div>
+                </section>
+
+                <section id="leadership">
+                    <h2 class="route">
+                        <span class="method">GET</span>
+                        <span class="route-path">/leadership</span>
+                        <span class="route-note">?level=INFO</span>
+                    </h2>
+                    <p class="section-summary" style="font-size: clamp(17px, 2.2vw, 20px); color: var(--neutral-200); max-width: 700px;">{{ leadership.summary }}</p>
+                    <div class="panel">
+                        <div class="panel-header">
+                            <div class="panel-header-title">Operating log</div>
+                            <div class="panel-header-meta">{{ leadership.entries|length }} entries</div>
+                        </div>
+{% for entry in leadership.entries %}
+                        <div class="log-entry">
+                            <span class="log-tag log-tag--{{ entry.variant }}">{{ entry.tag }}</span>
+                            <div><div class="log-title">{{ entry.title }}</div><p class="log-body">{{ entry.body }}</p></div>
+                        </div>
+{% endfor %}
+                    </div>
+                </section>
+
+                <section id="work">
+                    <h2 class="route" style="margin-bottom: 32px;">
+                        <span class="method">GET</span>
+                        <span class="route-path">/work</span>
+                        <span class="route-note">?selected=true</span>
+                    </h2>
+                    <div class="work-grid">
+{% for item in work %}
+                        <article class="work-card">
+                            <div class="work-kicker">{{ item.kicker }}</div>
+                            <h3>{{ item.title }}</h3>
+                            <p>{{ item.body }}</p>
+                        </article>
+{% endfor %}
+                    </div>
+                </section>
+
+                <section id="education" aria-label="Toolkit and education">
+                    <div class="toolkit-education">
+                        <div>
+                            <h3 class="route">
+                                <span class="method">GET</span>
+                                <span class="route-path">/toolkit</span>
+                            </h3>
+                            <div class="panel">
+                                <dl class="toolkit-facts">
+{% for label, value in toolkit %}
+                                    <dt>{{ label }}</dt><dd>{{ value }}</dd>
+{% endfor %}
+                                </dl>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="route">
+                                <span class="method">GET</span>
+                                <span class="route-path">/education</span>
+                            </h3>
+                            <div class="panel">
+                                <div class="degree-list">
+{% for degree in education.degrees %}
+                                    <div><div class="degree-name">{{ degree.name }}</div><div class="degree-meta">{{ degree.meta }}</div></div>
+{% endfor %}
+                                    <div class="publications">
+                                        <div class="publications-label">publications[]</div>
+{% for pub in education.publications %}
+                                        <p><strong>{{ pub.title }}</strong> — {{ pub.venue }}</p>
+{% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="contact" class="contact">
+                    <div class="contact-divider" aria-hidden="true"></div>
+                    <p class="route">
+                        <span class="method method--post">POST</span>
+                        <span class="route-path">/contact</span>
+                        <span class="route-note">· accepting: {{ contact.accepting }}</span>
+                    </p>
+                    <h2>{{ contact.heading }}</h2>
+                    <p class="contact-lede">{{ contact.lede }}</p>
+                    <div class="contact-actions">
+                        <a class="btn btn-primary" href="{{ contact.linkedin }}" target="_blank" rel="noopener">Message on LinkedIn</a>
+                        <a class="btn" href="mailto:{{ contact.email }}">{{ contact.email }}</a>
+                        <a class="btn" href="{{ contact.github }}" target="_blank" rel="noopener">GitHub</a>
+                    </div>
+                    <footer class="site-footer">
+                        <span>{{ profile.name }} · {{ career.location }}</span>
+                        <span>last_deploy: {{ last_deploy }}</span>
+                    </footer>
+                </section>
+            </main>
+
+        </div>
+    </div>
+</body>
+</html>

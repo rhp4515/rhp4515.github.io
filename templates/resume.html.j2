@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{{ profile.name }} — Resume</title>
+<style>
+    @page { size: Letter; margin: 0; }
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; }
+    body {
+        margin: 0;
+        background: #ffffff;
+        color: #111111;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 10pt;
+        line-height: 1.35;
+    }
+    a { color: #1a56db; }
+    p { margin: 0; }
+    ul { list-style: disc; padding-left: 20px; margin: 4px 0 10px; break-inside: avoid; }
+    li { margin-bottom: 3px; }
+    li:last-child { margin-bottom: 0; }
+    .row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+    .bold { font-weight: 700; }
+    .italic { font-style: italic; }
+    .muted { color: #444; }
+
+    header.resume-header h1 {
+        margin: 0;
+        font-size: 22pt;
+        font-weight: 700;
+        font-variant: small-caps;
+        letter-spacing: 0.03em;
+    }
+    .header-line2 { margin-top: 4px; font-size: 9.5pt; }
+    hr {
+        border: none;
+        border-top: 1px solid #000;
+        margin: 6px 0 10px;
+    }
+
+    section { margin-top: 12px; break-inside: avoid-page; }
+    section h2 {
+        font-size: 11pt;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        border-top: 1px solid #000;
+        padding-top: 4px;
+        margin: 0 0 6px;
+    }
+
+    .edu-entry, .company-group, .publication { break-inside: avoid; margin-bottom: 8px; }
+    .edu-entry:last-child, .company-group:last-child, .publication:last-child { margin-bottom: 0; }
+    .edu-meta { font-size: 9.5pt; color: #444; }
+
+    .company-header { margin-bottom: 2px; }
+    .role-entry { break-inside: avoid; margin-top: 4px; }
+    .role-entry:first-child { margin-top: 0; }
+
+    .skills-list li { padding-left: 2px; }
+
+    footer.resume-footer {
+        margin-top: 14px;
+        padding-top: 6px;
+        border-top: 1px solid #000;
+        font-size: 8.5pt;
+        color: #666;
+    }
+</style>
+</head>
+<body>
+    <div style="padding: 0.55in 0.65in;">
+
+        <header class="resume-header">
+            <div class="row">
+                <h1>{{ profile.name }}</h1>
+                <span class="italic">{{ career.location }}</span>
+            </div>
+            <div class="row header-line2">
+                <a href="{{ contact.linkedin }}">{{ contact.linkedin }}</a>
+                <span>
+                    <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
+                    &nbsp;·&nbsp;
+                    <a href="{{ contact.github }}">{{ contact.github }}</a>
+                </span>
+            </div>
+        </header>
+
+        <hr>
+
+        <section>
+            <h2>Education</h2>
+{% for degree in education.degrees %}
+            <div class="edu-entry">
+                <div class="row"><span class="bold">{{ degree.name }}</span></div>
+                <div class="edu-meta">{{ degree.meta }}</div>
+            </div>
+{% endfor %}
+        </section>
+
+        <section>
+            <h2>Technical Skills</h2>
+            <ul class="skills-list">
+{% for label, value in toolkit %}
+                <li><span class="bold">{{ label|capitalize }}:</span> {{ value|replace(' · ', ', ') }}</li>
+{% endfor %}
+            </ul>
+        </section>
+
+        <section>
+            <h2>Work Experience</h2>
+{% for group in experience_groups %}
+            <div class="company-group">
+                <div class="row company-header">
+                    <span class="bold">{{ group.company }}</span>
+                    <span class="italic">{{ group.pdf_dates }}</span>
+                </div>
+{% for role in group.roles %}
+                <div class="role-entry">
+                    <div class="row">
+                        <span class="italic">{{ role.job_title }}</span>
+                        <span class="italic">{% if loop.first and role.location %}{{ role.location }}{% else %}{{ role.pdf_dates }}{% endif %}</span>
+                    </div>
+                    <ul>
+{% for label, text in role.facts %}
+                        <li>{% if not label.startswith('impact') %}<span class="bold">{{ label|capitalize }}:</span> {% endif %}{{ text }}</li>
+{% endfor %}
+                    </ul>
+                </div>
+{% endfor %}
+            </div>
+{% endfor %}
+        </section>
+
+        <section>
+            <h2>Research Experience</h2>
+{% for pub in education.publications %}
+            <div class="publication">
+                <p><span class="bold">{{ pub.title }}</span></p>
+                <p class="muted">{{ pub.venue }}</p>
+            </div>
+{% endfor %}
+        </section>
+
+        <footer class="resume-footer">
+            <div class="row">
+                <span>{{ profile.name }} · {{ career.location }}</span>
+                <span>Updated {{ last_deploy }}</span>
+            </div>
+        </footer>
+
+    </div>
+</body>
+</html>

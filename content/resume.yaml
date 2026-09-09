@@ -1,0 +1,167 @@
+# Staging area — single source of truth for the resume.
+#
+# Edit this file, then run `python3 scripts/build.py` (or the `refresh-resume`
+# skill) to regenerate ../index.html and ../data/resume.pdf. Do not hand-edit
+# those two files — they're generated and get overwritten on every build.
+#
+# Dates are "YYYY-MM". Leave `end` unset (null) for the current role — the
+# build script computes its duration, the timeline chart's bar positions, the
+# axis year ticks, and the nav "uptime" badge from these dates and today's
+# date, so they stay correct on every rebuild without manual math.
+
+site:
+  title: "Hari Prasath Raman · Engineering Manager"
+  description: "Engineering Manager at Bloomberg leading the Enterprise Ingestion API Platform — trading systems, middleware and network automation, and people-first engineering leadership."
+  brand_name: "HPR"
+  brand_version: "v12.9 · stable"
+
+career:
+  start: "2013-07"   # earliest span below; drives the uptime badge + timeline axis
+  location: "New York, NY"
+
+profile:
+  eyebrow: "Engineering Manager · Enterprise Product Platform · API Integrations"
+  name: "Hari Prasath Raman"
+  lede: "Everything a client sends to Bloomberg passes through something my team owns. I believe a system you can't see is a system you don't own — so here's the pipeline, and the career that runs through it, instrumented."
+  sub: "Twelve years across trading systems, middleware and network automation. People-first leadership, and a firm bet on AI-assisted engineering as a quality lever, not just a speed one."
+
+pipeline:
+  sources: ["FIX", "REST", "BLPAPI"]
+  core:
+    label: "Ingestion platform"
+    title: "Validate · translate · route"
+    detail: "DataMapper dictionary · OpenAPI contracts · tracing on every hop"
+    metric: "300 msg/s · latency −50%"
+  bus: ["Kafka", "RabbitMQ", "Pub/Sub · SSE"]
+  consumers: ["Buyside workflows", "Sellside workflows", "Client subscribers"]
+  stats:
+    - {label: "txn / day", value: "1M+"}
+    - {label: "uptime · DR-1", value: "99.9%"}
+    - {label: "throughput vs legacy", value: "60×"}
+    - {label: "release cadence", value: "bi-weekly"}
+    - {label: "team", value: "10"}
+
+experience:
+  summary: "Returns the trace first, then each span with its impact as measured outcomes."
+  # Rendered both as the timeline chart (in document order) and, for kind:
+  # role entries, as a detailed role card below it. kind: education entries
+  # only appear in the chart and link to the #education section.
+  spans:
+    - id: role-em
+      kind: role
+      variant: strong
+      short_title: "Engineering Manager"
+      trace_org: "Bloomberg · Ingestion API Platform"
+      title: "Engineering Manager — Enterprise Realtime Data Ingestion API Platform"
+      org_line: "Bloomberg, New York"
+      start: "2022-03"
+      end: null
+      facts:
+        - ["scope", "Own the unified FIX / REST / BLPAPI ingestion platform behind the firm's mission-critical client data workflows — enterprise standards of correctness, reliability and performance."]
+        - ["impact[0]", "Re-architected trades/orders ingestion: 5 → 300 msg/s, 50 → 1,000+ orders per basket, 1M+ transactions a day across buyside and sellside workflows."]
+        - ["impact[1]", "Made the platform legible — dashboards and interfaces surfacing ingestion flow, latency patterns, error hotspots and per-client activity in real time; confident operations through peak market events."]
+        - ["impact[2]", "Drove a shared Pub/Sub platform capability out of competing SSE APIs — OpenAPI and Kafka contracts agreed before implementation so consumers could validate early."]
+        - ["impact[3]", "Directed the Linux migration at DR-1 with 99.9%+ uptime and no disruption to trading days; latency halved; releases monthly → weekly, error rate −30%."]
+        - ["impact[4]", "Coach the team on LLM-based tooling for troubleshooting, code assistance, test generation and pattern detection."]
+        - ["team", "10 engineers · onboarding ramp 3 months → 1 · TDD/BDD default · three senior engineers now lead areas independently"]
+
+    - id: role-sse
+      kind: role
+      variant: accent
+      short_title: "Senior Software Engineer"
+      trace_org: "Bloomberg · Transaction Infrastructure"
+      title: "Senior Software Engineer — Transaction Infrastructure"
+      org_line: "Bloomberg"
+      start: "2019-04"
+      end: "2022-02"
+      facts:
+        - ["impact[0]", "Designed DataMapper, a configuration-driven translation framework serving 600+ requests per second with horizontal scale — one data dictionary instead of bespoke integrations."]
+        - ["impact[1]", "Built the self-service portal that let trading-system teams request and manage their own middleware configuration, retiring a queue of manual tickets."]
+
+    - id: role-se
+      kind: role
+      variant: accent
+      short_title: "Software Engineer"
+      trace_org: "Bloomberg · Network Automation"
+      title: "Software Engineer — Network Automation"
+      org_line: "Bloomberg"
+      start: "2017-03"
+      end: "2019-04"
+      facts:
+        - ["impact[0]", "Shipped SIMN, a workflow engine for data-centre operators to author, validate, execute and audit network maintenance runbooks — 60%+ gain in operator efficiency."]
+        - ["impact[1]", "Built a distributed reachability monitor with historical query APIs, letting alerting correlate application failures against device outages."]
+
+    - id: role-whisper
+      kind: role
+      variant: dim
+      short_title: "Software Developer Intern"
+      trace_org: "Whisper · Data Science"
+      title: "Software Developer Intern — Data Science"
+      org_line: "Whisper, Venice CA"
+      start: "2016-06"
+      end: "2016-08"
+      facts:
+        - ["impact[0]", "Reporting and anomaly-detection dashboards on Druid, plus an interface for managing Presto queries and automating Jenkins jobs for the data science and SRE teams."]
+
+    - id: education
+      kind: education
+      variant: dashed
+      short_title: "M.S. Computer Science"
+      trace_org: "Stony Brook · 3.96 / 4 · USENIX paper"
+      # Approximate — adjust to your actual enrollment date if this is off;
+      # graduation (Dec 2016) is set below under education.degrees.
+      start: "2015-08"
+      end: "2016-12"
+
+    - id: role-zynga
+      kind: role
+      variant: muted
+      short_title: "Software Engineer"
+      trace_org: "Zynga · Bangalore"
+      title: "Software Engineer"
+      org_line: "Zynga, Bangalore"
+      start: "2013-07"
+      end: "2015-07"
+      facts:
+        - ["impact[0]", "Cut initial game load time 25% by preloading assets against player game state."]
+        - ["impact[1]", "Dynamic task generation tuned to player skill: engagement +15%, retention +20% across demographics."]
+
+leadership:
+  summary: "I've moved from being the person expected to know how the system works to creating the conditions for a team to make good decisions, deliver reliably, and grow without depending on me for every answer."
+  entries:
+    - {tag: "DIRECTION", variant: accent, title: "Direction beyond my own scope", body: "When several vertical teams were each building their own SSE streaming APIs, I made the case for a shared Pub/Sub platform capability, built consensus across engineering managers, and turned it into a committed workstream — contracts agreed before implementation so consumers could validate the model early."}
+    - {tag: "OWNERSHIP", variant: accent, title: "Ownership placed, not accumulated", body: "Offered entitlement, metering and throttling as one bundle of platform responsibility, I separated the problem and placed each capability with the organisation best positioned to own it. Scope discipline is a leadership decision, not a modesty one."}
+    - {tag: "RISK", variant: muted, title: "Risk named before it becomes failure", body: "Used real delivery data to show a migration pace incompatible with the firm's timeline, surfaced capacity and key-person risk the backlog didn't represent, and converted it into a tiered headcount proposal with explicit trade-offs. Inside the team, KTLO, resiliency, modernisation and forward capacity are budgeted separately so priority is visible."}
+    - {tag: "PROD", variant: muted, title: "Ownership through production", body: "Incidents driven to resolution and follow-up, structural issues tracked as risks with remediation plans, stakeholders told early enough to act. Formalised on-call and triage that had depended on senior engineers' institutional knowledge; the team's standard is detecting problems before clients do."}
+    - {tag: "PEOPLE", variant: accent, title: "Leadership capacity, built deliberately", body: "Three senior engineers now independently lead substantial areas, represent the team cross-functionally and handle escalations; two carry broader Tech Rep responsibility, and one — after clearer expectations and deliberately chosen opportunities — is now technical lead and my backup. Specific feedback, ownership matched to development needs, visible contributions, then genuinely stepping back."}
+    - {tag: "SEAMS", variant: muted, title: "Work at the seams", body: "Identity, configuration, permissioning and runtime infrastructure get hard at the boundaries between teams — that's where I've spent my time, including consolidating team-level risk submissions into organisation-wide themes so leadership could prioritise systemic issues instead of reconciling lists."}
+
+work:
+  - {kicker: "platform", title: "Enterprise ingestion API platform", body: "One platform for client data entering the firm — FIX, REST and BLPAPI on shared infrastructure, with pub/sub subscription management carrying 1M+ transactions daily at 60× the legacy throughput."}
+  - {kicker: "observability", title: "Ingestion visibility layer", body: "Dashboards and interfaces that show clients and internal teams exactly how their data is flowing — latency patterns, error hotspots, per-client activity — turning support escalations into self-diagnosis."}
+  - {kicker: "framework", title: "DataMapper", body: "A configuration-based data dictionary for transformation and translation across sources — 600+ requests per second, scaling horizontally instead of by hand-written adapters."}
+  - {kicker: "self-service", title: "Middleware portal", body: "Gave application teams direct control of their RabbitMQ and Kafka configuration, packaging and deployment — removing the middleware team as a bottleneck."}
+  - {kicker: "automation", title: "SIMN workflow engine", body: "Authoring, validation, execution and audit for network device maintenance, turning tribal runbooks into repeatable workflows — 60%+ operator efficiency gain."}
+
+toolkit:
+  - ["languages", "Python · C++20 · TypeScript · JavaScript · Bash"]
+  - ["protocols", "FIX · REST / OpenAPI · BLPAPI · SSE"]
+  - ["middleware", "Kafka · RabbitMQ · Celery · SaltStack"]
+  - ["frameworks", "Flask · Django · React"]
+  - ["practice", "People-first leadership · API platform strategy · observability-driven design · AI-assisted engineering · TDD / BDD"]
+
+education:
+  degrees:
+    - {name: "M.S. Computer Science", meta: "Stony Brook University · CGPA 3.96/4 · Dec 2016"}
+    - {name: "B.Tech. Computer Science & Engineering", meta: "NIT Tiruchirappalli · CGPA 8.5/10 · 2009 — 2013"}
+  publications:
+    - {title: "On the Performance Variation in Modern Storage Stacks", venue: "USENIX. File Systems Lab, Stony Brook (Prof. Erez Zadok)."}
+    - {title: "SHS-HTTPS enforcer", venue: "ACM SIGSOFT SEN 38(6). Networks Lab, NIT Trichy (Prof. S. Selvakumar)."}
+
+contact:
+  accepting: "leadership roles, advisory"
+  heading: "Let's build something that scales past you."
+  lede: "Preferred transport is a LinkedIn direct message; email is accepted as a fallback. I also mentor engineers working on LLMs, distributed systems and platform engineering, and advise founders on API platform strategy, B2B integration workflows and reliability at scale."
+  linkedin: "https://www.linkedin.com/in/hariprar"
+  email: "rhp4515@duck.com"
+  github: "https://github.com/rhp4515"
