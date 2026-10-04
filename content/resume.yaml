@@ -23,7 +23,7 @@ profile:
   eyebrow: "Engineering Manager · Enterprise Product Platform · API Integrations"
   name: "Hari Prasath Raman"
   lede: "Everything a client sends to Bloomberg passes through something my team owns. I believe a system you can't see is a system you don't own — so here's the pipeline, and the career that runs through it, instrumented."
-  sub: "Twelve years across trading systems, middleware and network automation. People-first leadership, and a firm bet on AI-assisted engineering as a quality lever, not just a speed one."
+  sub: "Twelve years across trading systems, middleware and network automation. People-first leadership, a habit of being first through a new migration — curious, but measured — and a firm bet on AI-assisted engineering as a quality lever, not just a speed one."
 
 pipeline:
   sources: ["FIX", "REST", "BLPAPI"]
@@ -57,13 +57,16 @@ experience:
       start: "2022-03"
       end: null
       facts:
-        - ["scope", "Own the unified FIX / REST / BLPAPI ingestion platform behind the firm's mission-critical client data workflows — enterprise standards of correctness, reliability and performance."]
-        - ["impact[0]", "Re-architected trades/orders ingestion: 5 → 300 msg/s, 50 → 1,000+ orders per basket, 1M+ transactions a day across buyside and sellside workflows."]
-        - ["impact[1]", "Made the platform legible — dashboards and interfaces surfacing ingestion flow, latency patterns, error hotspots and per-client activity in real time; confident operations through peak market events."]
-        - ["impact[2]", "Drove a shared Pub/Sub platform capability out of competing SSE APIs — OpenAPI and Kafka contracts agreed before implementation so consumers could validate early."]
-        - ["impact[3]", "Directed the Linux migration at DR-1 with 99.9%+ uptime and no disruption to trading days; latency halved; releases monthly → weekly, error rate −30%."]
-        - ["impact[4]", "Coach the team on LLM-based tooling for troubleshooting, code assistance, test generation and pattern detection."]
-        - ["team", "10 engineers · onboarding ramp 3 months → 1 · TDD/BDD default · three senior engineers now lead areas independently"]
+        - ["scope", "Own the unified FIX / REST / BLPAPI ingestion platform through which client trade and order workflows enter the firm — client-facing, real-time, held to enterprise standards of correctness, reliability and performance."]
+        - ["impact[0]", "Led a multi-year live-traffic migration that turned the platform into a pure infrastructure layer — buyside/sellside ticketing logic handed to the owning domain teams, the monolith broken into microservices — with no client impact."]
+        - ["impact[1]", "Re-architected trades/orders ingestion: 5 → 300 msg/s, 50 → 1,000+ orders per basket, 1M+ transactions a day across buyside and sellside workflows."]
+        - ["impact[2]", "Took on a second team before a capacity gap hit; protected its real-time downstreams with backpressure and client rate limiting, and built the case for added headcount by tying its roadmap to the org's API-first strategy."]
+        - ["impact[3]", "Drove a shared Pub/Sub platform capability out of competing SSE APIs — OpenAPI and Kafka contracts agreed before implementation so consumers could validate early."]
+        - ["impact[4]", "Made \"catch it before the client does\" a team-wide operating principle — disciplined logging, health dashboards from application and middleware metrics, AI-assisted issue detection, and a support-first triage path with a chatbot that keeps resolvable issues off engineering's plate."]
+        - ["impact[5]", "Directed the Solaris → Linux migration at DR-1 (99.9%+ uptime, latency halved, monthly → weekly releases, errors −30%) and was among the first to move apps from bare metal to VMs ahead of the cloud move."]
+        - ["impact[6]", "Drove AI adoption with a concrete plan for every engineer to build it into daily work — which kept the migration on schedule despite scope added along the way."]
+        - ["impact[7]", "Every intern/co-op project I've sponsored has shipped as a critical-pipeline component: a traffic-capture system now used to stress-test new apps and guide feature decisions, a migration-burndown widget for senior leadership, and a Flink-based field-usage observability pipeline (in progress)."]
+        - ["team", "10 engineers · 6-for-6 on team-matching hires · onboarding ramp 3 months → 1, new grads on production work from day one · TDD/BDD default · three senior engineers now lead areas independently"]
 
     - id: role-sse
       kind: role
@@ -132,9 +135,11 @@ leadership:
     - {tag: "DIRECTION", variant: accent, title: "Direction beyond my own scope", body: "When several vertical teams were each building their own SSE streaming APIs, I made the case for a shared Pub/Sub platform capability, built consensus across engineering managers, and turned it into a committed workstream — contracts agreed before implementation so consumers could validate the model early."}
     - {tag: "OWNERSHIP", variant: accent, title: "Ownership placed, not accumulated", body: "Offered entitlement, metering and throttling as one bundle of platform responsibility, I separated the problem and placed each capability with the organisation best positioned to own it. Scope discipline is a leadership decision, not a modesty one."}
     - {tag: "RISK", variant: muted, title: "Risk named before it becomes failure", body: "Used real delivery data to show a migration pace incompatible with the firm's timeline, surfaced capacity and key-person risk the backlog didn't represent, and converted it into a tiered headcount proposal with explicit trade-offs. Inside the team, KTLO, resiliency, modernisation and forward capacity are budgeted separately so priority is visible."}
-    - {tag: "PROD", variant: muted, title: "Ownership through production", body: "Incidents driven to resolution and follow-up, structural issues tracked as risks with remediation plans, stakeholders told early enough to act. Formalised on-call and triage that had depended on senior engineers' institutional knowledge; the team's standard is detecting problems before clients do."}
-    - {tag: "PEOPLE", variant: accent, title: "Leadership capacity, built deliberately", body: "Three senior engineers now independently lead substantial areas, represent the team cross-functionally and handle escalations; two carry broader Tech Rep responsibility, and one — after clearer expectations and deliberately chosen opportunities — is now technical lead and my backup. Specific feedback, ownership matched to development needs, visible contributions, then genuinely stepping back."}
+    - {tag: "PROD", variant: muted, title: "Ownership through production", body: "Incidents driven to resolution and follow-up, structural issues tracked as risks with remediation plans, stakeholders told early enough to act. Formalised on-call and triage that had depended on senior engineers' institutional knowledge; the team's standard is detecting problems before clients do. A shared services/engineering channel removed a single-engineer bottleneck, release announcements let people tie issues to rollouts, and written stand-ups double as a quarter-long journal."}
+    - {tag: "PEOPLE", variant: accent, title: "Leadership capacity, built deliberately", body: "Three senior engineers now independently lead substantial areas, represent the team cross-functionally and handle escalations; two carry broader Tech Rep responsibility, and one — after clearer expectations and deliberately chosen opportunities — is now technical lead and my backup. Specific feedback, ownership matched to development needs, visible contributions, then genuinely stepping back. On a two-level IC ladder, growth runs through Tech Rep, guilds, conference talks, cross-team knowledge sharing and inner-sourcing."}
     - {tag: "SEAMS", variant: muted, title: "Work at the seams", body: "Identity, configuration, permissioning and runtime infrastructure get hard at the boundaries between teams — that's where I've spent my time, including consolidating team-level risk submissions into organisation-wide themes so leadership could prioritise systemic issues instead of reconciling lists."}
+    - {tag: "ORG DESIGN", variant: accent, title: "Splitting the team for the system's sake", body: "Inbound and outbound systems shared one team, and outbound wasn't getting the care it needed. I pushed to split it so outbound got a dedicated team and leader, seeded with my own engineers — putting the system ahead of my own scope."}
+    - {tag: "HIRING", variant: muted, title: "Hiring by mutual match", body: "Across 5–6 team-matching sessions, every one ended in a match, and those engineers stayed engaged for two years or more."}
 
 work:
   - {kicker: "platform", title: "Enterprise ingestion API platform", body: "One platform for client data entering the firm — FIX, REST and BLPAPI on shared infrastructure, with pub/sub subscription management carrying 1M+ transactions daily at 60× the legacy throughput."}
