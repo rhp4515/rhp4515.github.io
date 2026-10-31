@@ -150,10 +150,9 @@ work:
 
 toolkit:
   - ["languages", "Python · C++20 · TypeScript · JavaScript · Bash"]
-  - ["protocols", "FIX · REST / OpenAPI · BLPAPI · SSE"]
-  - ["middleware", "Kafka · RabbitMQ · Celery · SaltStack"]
-  - ["frameworks", "Flask · Django · React"]
-  - ["practice", "People-first leadership · API platform strategy · observability-driven design · AI-assisted engineering · TDD / BDD"]
+  - ["platform", "FIX · REST / OpenAPI · BLPAPI · SSE · Kafka · RabbitMQ"]
+  - ["AI tooling", "Claude Code · agentic skills · LLM-assisted troubleshooting, test generation and log-based issue detection"]
+  - ["practice", "People-first leadership · API platform strategy · observability-driven design · TDD / BDD"]
 
 education:
   degrees:

@@ -117,19 +117,9 @@
             <h2>Technical Skills</h2>
             <ul class="skills-list">
 {% for label, value in toolkit %}
-                <li><span class="bold">{{ label|capitalize }}:</span> {{ value|replace(' · ', ', ') }}</li>
+                <li><span class="bold">{{ label[0]|upper }}{{ label[1:] }}:</span> {{ value|replace(' · ', ', ') }}</li>
 {% endfor %}
             </ul>
-        </section>
-
-        <section>
-            <h2>Research Experience</h2>
-{% for pub in education.publications %}
-            <div class="publication">
-                <p><span class="bold">{{ pub.title }}</span></p>
-                <p class="muted">{{ pub.venue }}</p>
-            </div>
-{% endfor %}
         </section>
 
         <section>
@@ -142,6 +132,15 @@
 {% endfor %}
         </section>
 
+        <section>
+            <h2>Research Experience</h2>
+{% for pub in education.publications %}
+            <div class="publication">
+                <p><span class="bold">{{ pub.title }}</span></p>
+                <p class="muted">{{ pub.venue }}</p>
+            </div>
+{% endfor %}
+        </section>
         <footer class="resume-footer">
             <div class="row">
                 <span>{{ profile.name }} · {{ career.location }}</span>
