@@ -60,7 +60,7 @@ experience:
         - ["scope", "Own the FIX, REST and BLPAPI ingestion platform that client trade and order workflows pass through to get into Bloomberg, with end-to-end accountability for correctness, reliability and delivery. It is client-facing and real-time."]
         - ["impact[0]", "Led a multi-year migration of live client traffic that turned the platform into a pure infrastructure layer. Buyside and sellside ticketing logic moved to the teams that own those domains, the monolith became microservices, and clients saw no impact."]
         - ["impact[1]", "Re-architected trade and order ingestion, from 5 to 300 msg/s and from 50 to 1,000+ orders per basket, at 1M+ transactions a day."]
-        - ["impact[2]", "Saw a capacity gap coming and took on a second team before it hit. Added backpressure and client rate limiting to protect its real-time downstream systems, and made the case for more headcount by tying its roadmap to the org's API-first strategy."]
+        - ["impact[2]", "Took on a second team ahead of a capacity gap and merged it with mine into the enterprise product gateway team. Added backpressure and client rate limiting to protect its real-time downstreams, and made the headcount case via API-first strategy."]
         - ["impact[3]", "Also own the enterprise product gateway, a separate system handling about 10,000 compute-heavy requests a minute. Helped the team stabilize it for memory use and high availability, with async delivery for long-running requests. Now building token-based throttling and per-workflow, per-client rate limiting, as a long-term effort to merge it with the ingestion platform."]
         - ["impact[4]", "When several teams were each building their own SSE APIs, pushed for one shared Pub/Sub platform instead. We agreed on OpenAPI and Kafka contracts before writing code, so consumers could check them early."]
         - ["impact[5]", "Made \"catch it before the client does\" the team's standard: consistent logging, health dashboards from application and middleware metrics, AI-assisted issue detection, and a support-first triage path with a chatbot."]
@@ -68,7 +68,7 @@ experience:
         - ["impact[7]", "Asked every engineer to build AI into their daily work, with a concrete plan for how, which helped keep the migration on schedule."]
         - ["impact[8]", "Every intern and co-op project I have sponsored has shipped to production: a traffic-capture system now used to stress-test new apps and decide which features to keep, a migration burndown widget for leadership, and a Flink field-usage pipeline (in progress)."]
         - ["impact[9]", "Grew three senior engineers into independent area leads, one now my technical lead and backup. On a flat two-level IC ladder, built their visibility through Tech Rep, guilds, internal talks and inner-sourcing."]
-        - ["team", "12 engineers · 6 for 6 on team-matching hires · new grads on production work from day one, ramp-up cut from 3 months to 1 · TDD/BDD"]
+        - ["team", "12 engineers · 6 for 6 on team-matching hires · new grads on real production work, ramp-up 3 months → 1 · TDD/BDD"]
 
     - id: role-sse
       kind: role
