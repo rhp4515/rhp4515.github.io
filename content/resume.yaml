@@ -58,21 +58,17 @@ experience:
       end: null
       facts:
         - ["scope", "Own two client-facing, real-time systems: the FIX, REST and BLPAPI ingestion platform that carries client trade and order workflows into Bloomberg, and the enterprise product gateway. End-to-end accountability for correctness, reliability and delivery."]
-        - ["impact[0]", "Led a multi-year migration of live client traffic that turned the platform into a pure infrastructure layer: buyside and sellside ticketing logic moved to the domain teams that own it, and the monolith became microservices. Clients saw no impact, and the capacity it freed went into new services and the scale clients kept asking for."]
-        - ["impact[1]", "Re-architected trade and order ingestion, from 5 to 300 msg/s and from 50 to 1,000+ orders per basket, so the platform keeps up with client growth at 1M+ transactions a day."]
-        - ["impact[2]", "Designed the move from a memory-hungry, config-driven monolith to microservices, then taught the team the new model: what each service owns and which shared code (channel, message and envelope utilities) lives in common libraries. That fixed the memory problem and let the whole team work in the new design, not just me."]
-        - ["impact[3]", "Prototyped the centralized command router myself: a kill switch and live-config mechanism for many instances across client namespaces, because one open socket per instance could not scale with per-client isolation. Handed it to the team, who extended it, and it carried real weight during the migration."]
-        - ["impact[4]", "Took on a second team ahead of a capacity gap and merged it with mine into the enterprise product gateway team. Added backpressure and client rate limiting so a flood of client requests cannot overwhelm its real-time downstreams, and made the headcount case through the org's API-first strategy."]
-        - ["impact[5]", "Also own the enterprise product gateway, a separate system taking about 10,000 compute-heavy requests a minute. Helped the team stabilize it for memory use and high availability, with async delivery so long requests do not hold up callers. Now building token-based throttling and per-workflow, per-client rate limiting, so no one workflow can starve the rest, as a step toward merging it with the ingestion platform."]
-        - ["impact[6]", "When several teams were each building their own SSE APIs, pushed for one shared Pub/Sub platform instead of duplicate effort. We agreed on OpenAPI and Kafka contracts before writing code, so consumers could check them early."]
-        - ["impact[7]", "Made \"catch it before the client does\" the team's standard, which is what senior management expects of client-facing systems: consistent logging, health dashboards from application and middleware metrics, AI-assisted issue detection, and a support-first triage path with a chatbot that keeps resolvable issues off engineering."]
-        - ["impact[8]", "Directed the Solaris to Linux migration at DR-1 with 99.9%+ uptime and no disruption to trading days. Latency halved, releases went from monthly to weekly, and errors dropped 30%. Was also one of the first to move my own apps from bare metal to VMs ahead of the cloud move, so I knew the pain before asking the team to take it on."]
-        - ["impact[9]", "Asked every engineer to build AI into their daily work, with a concrete plan for how. It helped keep the migration on schedule despite responsibilities added along the way."]
-        - ["impact[10]", "Sponsored intern and co-op projects that each shipped to production: a traffic-capture system now used to stress-test new apps and decide which features to keep, a migration burndown widget for leadership, and a Flink field-usage pipeline (in progress). Interns got work they are proud of, and the team got extra capacity."]
-        - ["impact[11]", "Grew three senior engineers into independent area leads, one now my technical lead and backup, so the team no longer depends on me for every call. Also turned around a struggling engineer who is now a senior member the team relies on as a backup, by matching them to the observability work they cared about."]
-        - ["impact[12]", "Recruited about 8 engineers over the last 3 years (5 junior, 3 senior) and regularly interview both new and experienced hires. Every one of the 5-6 team-matching sessions I took part in ended in a match, and those engineers stayed engaged for at least a couple of years. New college hires get real production work from day one, which cut ramp-up from 3 months to 1."]
-        - ["impact[13]", "Bloomberg has no promotion committee, so promotions rest on the end-of-year evaluation: I build each engineer's case from specific examples and use cases of their impact, and made that case for about 5 engineers moving up. On a flat two-level IC ladder, I also built growth paths through Tech Rep, guilds, internal talks and inner-sourcing, so people earn visibility beyond the team."]
-        - ["team", "12 engineers · TDD/BDD by default"]
+        - ["impact[0]", "Led a multi-year migration of live client traffic that turned the platform into a pure infrastructure layer, moving buyside and sellside ticketing logic to the domain teams that own it and the monolith to microservices. Clients saw no impact, and the freed capacity went to new services and the scale clients kept asking for. Ingestion went from 5 to 300 msg/s, at 1M+ transactions a day."]
+        - ["impact[1]", "Also own the enterprise product gateway, a separate system taking about 10,000 compute-heavy requests a minute. Helped the team stabilize it for memory and high availability, with async delivery so long requests do not hold up callers. Now building token-based, per-workflow, per-client rate limiting so no one workflow starves the rest, ahead of merging it with the ingestion platform."]
+        - ["impact[2]", "Took on a second team ahead of a capacity gap and merged it with mine into the enterprise product gateway team, now 12 engineers. Added backpressure and rate limiting to protect its real-time downstreams, and made the headcount case via API-first strategy."]
+        - ["impact[3]", "Grew three senior engineers into independent area leads, one now my technical lead and backup, so the team no longer depends on me for every call. Turned around a struggling engineer into a senior member the team leans on."]
+        - ["impact[4]", "Bloomberg has no promotion committee, so promotions rest on the end-of-year evaluation. I build each engineer's case from specific examples and use cases of their impact, and made that case for about 5 engineers moving up."]
+        - ["impact[5]", "Recruited about 8 engineers over the last 3 years (5 junior, 3 senior) and regularly interview new and experienced hires. New grads get real production work from day one, cutting ramp-up from 3 months to 1."]
+        - ["impact[6]", "Asked every engineer to build AI into their daily work, with a concrete plan for how. It helped keep the migration on schedule, and AI-assisted issue detection now supports the team's goal of catching problems before clients do."]
+        - ["impact[7]", "Made \"catch it before the client does\" the team's standard, as senior management expects of client-facing systems: consistent logging, health dashboards from application and middleware metrics, and a support-first triage path with a chatbot. TDD/BDD is the default."]
+        - ["impact[8]", "Stay hands-on where it pays off: prototyped the centralized command router myself (a kill switch and live-config mechanism that scaled where one socket per instance could not) then handed it off, and designed the move to microservices and taught the team it."]
+        - ["impact[9]", "Pushed for one shared Pub/Sub platform when several teams were each building their own SSE APIs, with OpenAPI and Kafka contracts agreed before code so consumers could check them early."]
+        - ["impact[10]", "Directed the Solaris to Linux migration at DR-1 with 99.9%+ uptime and no disruption to trading days. Latency halved, releases went weekly, errors fell 30%."]
 
     - id: role-sse
       kind: role
@@ -85,7 +81,7 @@ experience:
       end: "2022-02"
       facts:
         - ["impact[0]", "Designed DataMapper, a configuration-driven translation framework that handles 600+ requests per second and scales horizontally. One data dictionary replaced a pile of one-off integrations, so a new source no longer meant writing a new adapter."]
-        - ["impact[1]", "Built a self-service portal so trading-system teams could request and manage their own middleware configuration, which cleared out a queue of manual tickets."]
+        - ["impact[1]", "Built a self-service portal for trading-system teams to manage their own middleware configuration, clearing a queue of manual tickets."]
 
     - id: role-se
       kind: role
@@ -110,7 +106,7 @@ experience:
       start: "2016-06"
       end: "2016-08"
       facts:
-        - ["impact[0]", "Built reporting and anomaly-detection dashboards on Druid, plus a tool for managing Presto queries and automating Jenkins jobs for the data science and SRE teams."]
+        - ["impact[0]", "Built reporting and anomaly-detection dashboards on Druid, plus Presto and Jenkins automation tooling for data science and SRE."]
 
     - id: education
       kind: education
