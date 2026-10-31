@@ -1,0 +1,10 @@
+.git
+.claude
+.assetsignore
+CLAUDE.md
+LICENSE
+content
+scripts
+templates
+requirements.txt
+wrangler.jsonc

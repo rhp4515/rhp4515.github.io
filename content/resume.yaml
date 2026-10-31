@@ -11,7 +11,7 @@
 
 site:
   title: "Hari Prasath Raman · Engineering Manager"
-  description: "Engineering Manager at Bloomberg leading the Enterprise Ingestion API Platform — trading systems, middleware and network automation, and people-first engineering leadership."
+  description: "Engineering Manager at Bloomberg. I lead the team behind the Enterprise Ingestion API Platform, and I care about trading systems, middleware and building teams people want to stay on."
   brand_name: "HPR"
   brand_version: "v12.9 · stable"
 
@@ -23,7 +23,7 @@ profile:
   eyebrow: "Engineering Manager · Enterprise Product Platform · API Integrations"
   name: "Hari Prasath Raman"
   lede: "Everything a client sends to Bloomberg passes through something my team owns. I believe a system you can't see is a system you don't own — so here's the pipeline, and the career that runs through it, instrumented."
-  sub: "Twelve years across trading systems, middleware and network automation. People-first leadership, and a firm bet on AI-assisted engineering as a quality lever, not just a speed one."
+  sub: "Twelve years across trading systems, middleware and network automation. I lead with people first, I like being the first one through a new migration (curious, but careful about it), and I think AI-assisted engineering helps quality as much as speed."
 
 pipeline:
   sources: ["FIX", "REST", "BLPAPI"]
@@ -39,7 +39,7 @@ pipeline:
     - {label: "uptime · DR-1", value: "99.9%"}
     - {label: "throughput vs legacy", value: "60×"}
     - {label: "release cadence", value: "bi-weekly"}
-    - {label: "team", value: "10"}
+    - {label: "team", value: "12"}
 
 experience:
   summary: "Returns the trace first, then each span with its impact as measured outcomes."
@@ -57,13 +57,18 @@ experience:
       start: "2022-03"
       end: null
       facts:
-        - ["scope", "Own the unified FIX / REST / BLPAPI ingestion platform behind the firm's mission-critical client data workflows — enterprise standards of correctness, reliability and performance."]
-        - ["impact[0]", "Re-architected trades/orders ingestion: 5 → 300 msg/s, 50 → 1,000+ orders per basket, 1M+ transactions a day across buyside and sellside workflows."]
-        - ["impact[1]", "Made the platform legible — dashboards and interfaces surfacing ingestion flow, latency patterns, error hotspots and per-client activity in real time; confident operations through peak market events."]
-        - ["impact[2]", "Drove a shared Pub/Sub platform capability out of competing SSE APIs — OpenAPI and Kafka contracts agreed before implementation so consumers could validate early."]
-        - ["impact[3]", "Directed the Linux migration at DR-1 with 99.9%+ uptime and no disruption to trading days; latency halved; releases monthly → weekly, error rate −30%."]
-        - ["impact[4]", "Coach the team on LLM-based tooling for troubleshooting, code assistance, test generation and pattern detection."]
-        - ["team", "10 engineers · onboarding ramp 3 months → 1 · TDD/BDD default · three senior engineers now lead areas independently"]
+        - ["scope", "Own two client-facing, real-time systems: the FIX, REST and BLPAPI ingestion platform that carries client trade and order workflows into Bloomberg, and the enterprise product gateway. End-to-end accountability for correctness, reliability and delivery."]
+        - ["impact[0]", "Led a multi-year migration of live client traffic that turned the platform into a pure infrastructure layer, moving buyside and sellside ticketing logic to the domain teams that own it and the monolith to microservices. Clients saw no impact, and the freed capacity went to new services and the scale clients kept asking for. Ingestion went from 5 to 300 msg/s, at 1M+ transactions a day."]
+        - ["impact[1]", "Took on a second team ahead of a capacity gap and merged it with mine into the enterprise product gateway team, now 12 engineers. Added backpressure and rate limiting to protect its real-time downstreams, and made the headcount case via API-first strategy."]
+        - ["impact[2]", "Own the enterprise product gateway, a separate system taking about 10,000 compute-heavy requests a minute. Helped the team stabilize it for memory and high availability, with async delivery so long requests do not hold up callers. Now building token-based, per-workflow, per-client rate limiting so no one workflow starves the rest, ahead of merging it with the ingestion platform."]
+        - ["impact[3]", "Grew three senior engineers into independent area leads, one now my technical lead and backup, so the team no longer depends on me for every call. Turned around a struggling engineer into a senior member the team leans on."]
+        - ["impact[4]", "Bloomberg has no promotion committee, so promotions rest on the end-of-year evaluation. I build each engineer's case from specific examples and use cases of their impact, and made that case for about 5 engineers moving up."]
+        - ["impact[5]", "Recruited about 8 engineers over the last 3 years (5 junior, 3 senior) and regularly interview new and experienced hires. New grads get real production work from day one, cutting ramp-up from 3 months to 1."]
+        - ["impact[6]", "Pushed for one shared Pub/Sub platform when several teams were each building their own SSE APIs, with OpenAPI and Kafka contracts agreed before code so consumers could check them early."]
+        - ["impact[7]", "Made \"catch it before the client does\" the team's standard, as senior management expects of client-facing systems: consistent logging, health dashboards from application and middleware metrics, and a support-first triage path with a chatbot. TDD/BDD is the default."]
+        - ["impact[8]", "Asked every engineer to build AI into their daily work, with a concrete plan for how. It helped keep the migration on schedule, and AI-assisted issue detection now supports the team's goal of catching problems before clients do."]
+        - ["impact[9]", "Stay hands-on where it pays off: prototyped the centralized command router myself (a kill switch and live-config mechanism that scaled where one socket per instance could not) then handed it off, and designed the move to microservices and taught the team it."]
+        - ["impact[10]", "Directed the Solaris to Linux migration at DR-1 with 99.9%+ uptime and no disruption to trading days. Latency halved, releases went weekly, errors fell 30%."]
 
     - id: role-sse
       kind: role
@@ -75,8 +80,8 @@ experience:
       start: "2019-04"
       end: "2022-02"
       facts:
-        - ["impact[0]", "Designed DataMapper, a configuration-driven translation framework serving 600+ requests per second with horizontal scale — one data dictionary instead of bespoke integrations."]
-        - ["impact[1]", "Built the self-service portal that let trading-system teams request and manage their own middleware configuration, retiring a queue of manual tickets."]
+        - ["impact[0]", "Designed DataMapper, a configuration-driven translation framework that handles 600+ requests per second and scales horizontally. One data dictionary replaced a pile of one-off integrations, so a new source no longer meant writing a new adapter."]
+        - ["impact[1]", "Built a self-service portal for trading-system teams to manage their own middleware configuration, clearing a queue of manual tickets."]
 
     - id: role-se
       kind: role
@@ -88,8 +93,8 @@ experience:
       start: "2017-03"
       end: "2019-04"
       facts:
-        - ["impact[0]", "Shipped SIMN, a workflow engine for data-centre operators to author, validate, execute and audit network maintenance runbooks — 60%+ gain in operator efficiency."]
-        - ["impact[1]", "Built a distributed reachability monitor with historical query APIs, letting alerting correlate application failures against device outages."]
+        - ["impact[0]", "Built SIMN, a workflow engine where data-centre operators write, validate, run and audit network maintenance runbooks. It turned tribal runbooks into repeatable workflows and made operators 60%+ more efficient."]
+        - ["impact[1]", "Built a distributed reachability monitor with historical query APIs, so alerting could line up application failures with device outages."]
 
     - id: role-whisper
       kind: role
@@ -101,7 +106,7 @@ experience:
       start: "2016-06"
       end: "2016-08"
       facts:
-        - ["impact[0]", "Reporting and anomaly-detection dashboards on Druid, plus an interface for managing Presto queries and automating Jenkins jobs for the data science and SRE teams."]
+        - ["impact[0]", "Built reporting and anomaly-detection dashboards on Druid, plus Presto and Jenkins automation tooling for data science and SRE."]
 
     - id: education
       kind: education
@@ -123,32 +128,33 @@ experience:
       start: "2013-07"
       end: "2015-07"
       facts:
-        - ["impact[0]", "Cut initial game load time 25% by preloading assets against player game state."]
-        - ["impact[1]", "Dynamic task generation tuned to player skill: engagement +15%, retention +20% across demographics."]
+        - ["impact[0]", "Cut initial game load time by 25% by preloading assets based on the player's game state."]
+        - ["impact[1]", "Generated tasks dynamically to match each player's skill, which lifted engagement 15% and retention 20% across demographics."]
 
 leadership:
-  summary: "I've moved from being the person expected to know how the system works to creating the conditions for a team to make good decisions, deliver reliably, and grow without depending on me for every answer."
+  summary: "I used to be the person expected to know how everything works. Now I try to set the team up to make good calls, ship reliably and grow without needing me for every answer."
   entries:
-    - {tag: "DIRECTION", variant: accent, title: "Direction beyond my own scope", body: "When several vertical teams were each building their own SSE streaming APIs, I made the case for a shared Pub/Sub platform capability, built consensus across engineering managers, and turned it into a committed workstream — contracts agreed before implementation so consumers could validate the model early."}
-    - {tag: "OWNERSHIP", variant: accent, title: "Ownership placed, not accumulated", body: "Offered entitlement, metering and throttling as one bundle of platform responsibility, I separated the problem and placed each capability with the organisation best positioned to own it. Scope discipline is a leadership decision, not a modesty one."}
-    - {tag: "RISK", variant: muted, title: "Risk named before it becomes failure", body: "Used real delivery data to show a migration pace incompatible with the firm's timeline, surfaced capacity and key-person risk the backlog didn't represent, and converted it into a tiered headcount proposal with explicit trade-offs. Inside the team, KTLO, resiliency, modernisation and forward capacity are budgeted separately so priority is visible."}
-    - {tag: "PROD", variant: muted, title: "Ownership through production", body: "Incidents driven to resolution and follow-up, structural issues tracked as risks with remediation plans, stakeholders told early enough to act. Formalised on-call and triage that had depended on senior engineers' institutional knowledge; the team's standard is detecting problems before clients do."}
-    - {tag: "PEOPLE", variant: accent, title: "Leadership capacity, built deliberately", body: "Three senior engineers now independently lead substantial areas, represent the team cross-functionally and handle escalations; two carry broader Tech Rep responsibility, and one — after clearer expectations and deliberately chosen opportunities — is now technical lead and my backup. Specific feedback, ownership matched to development needs, visible contributions, then genuinely stepping back."}
-    - {tag: "SEAMS", variant: muted, title: "Work at the seams", body: "Identity, configuration, permissioning and runtime infrastructure get hard at the boundaries between teams — that's where I've spent my time, including consolidating team-level risk submissions into organisation-wide themes so leadership could prioritise systemic issues instead of reconciling lists."}
+    - {tag: "DIRECTION", variant: accent, title: "Direction beyond my own scope", body: "Several teams were each building their own SSE streaming APIs. I made the case for one shared Pub/Sub capability, got the other engineering managers on board, and turned it into a committed workstream. We agreed contracts before implementation so consumers could test the model early."}
+    - {tag: "OWNERSHIP", variant: accent, title: "Ownership placed, not accumulated", body: "When entitlement, metering and throttling landed on us as one bundle, I split the problem up and gave each piece to the organisation best placed to own it. Keeping scope tight is a leadership decision, not modesty."}
+    - {tag: "RISK", variant: muted, title: "Risk named before it becomes failure", body: "I used real delivery data to show that our migration pace didn't fit the firm's timeline, flagged capacity and key-person risks the backlog didn't show, and turned that into a tiered headcount proposal with the trade-offs spelled out. Inside the team, KTLO, resiliency, modernisation and future capacity each get their own budget so priorities are visible."}
+    - {tag: "PROD", variant: muted, title: "Ownership through production", body: "I follow incidents through to resolution and follow-up, track structural issues as risks with remediation plans, and tell stakeholders early enough that they can act. On-call and triage used to depend on what senior engineers happened to know; now they're formal. Our standard is to spot problems before clients do. A shared services and engineering channel ended a single-engineer bottleneck, release announcements help people connect issues to rollouts, and written stand-ups double as a journal for the quarter."}
+    - {tag: "PEOPLE", variant: accent, title: "Leadership capacity, built deliberately", body: "Three senior engineers now lead big areas on their own, represent the team across functions and handle escalations. Two carry wider Tech Rep responsibility, and one, after clearer expectations and opportunities I picked on purpose, is now technical lead and my backup. What worked: specific feedback, ownership matched to what each person needed to grow, visible contributions, and then really stepping back. There's no promotion committee, so I make each case in the end-of-year evaluation with concrete examples of impact (about 5 engineers so far). On a two-level IC ladder, growth also comes through Tech Rep, guilds, conference talks, cross-team knowledge sharing and inner-sourcing."}
+    - {tag: "SEAMS", variant: muted, title: "Work at the seams", body: "Identity, configuration, permissioning and runtime infrastructure get hard at the boundaries between teams, and that's where I've spent my time. That includes rolling team-level risk submissions up into org-wide themes so leadership could prioritise systemic issues instead of reconciling lists."}
+    - {tag: "ORG DESIGN", variant: accent, title: "Splitting the team for the system's sake", body: "Inbound and outbound systems shared one team, and outbound was not getting the care it needed. I pushed to split the team so outbound had its own team and leader, and sent some of my own engineers over to seed it. The system mattered more than my scope."}
+    - {tag: "HIRING", variant: muted, title: "Hiring by mutual match", body: "I've recruited about 8 engineers in the last three years (5 junior, 3 senior) and interview new and experienced hires regularly. Every one of the 5-6 team-matching sessions I took part in ended in a match, and those engineers stayed engaged for two years or more."}
 
 work:
-  - {kicker: "platform", title: "Enterprise ingestion API platform", body: "One platform for client data entering the firm — FIX, REST and BLPAPI on shared infrastructure, with pub/sub subscription management carrying 1M+ transactions daily at 60× the legacy throughput."}
-  - {kicker: "observability", title: "Ingestion visibility layer", body: "Dashboards and interfaces that show clients and internal teams exactly how their data is flowing — latency patterns, error hotspots, per-client activity — turning support escalations into self-diagnosis."}
-  - {kicker: "framework", title: "DataMapper", body: "A configuration-based data dictionary for transformation and translation across sources — 600+ requests per second, scaling horizontally instead of by hand-written adapters."}
-  - {kicker: "self-service", title: "Middleware portal", body: "Gave application teams direct control of their RabbitMQ and Kafka configuration, packaging and deployment — removing the middleware team as a bottleneck."}
-  - {kicker: "automation", title: "SIMN workflow engine", body: "Authoring, validation, execution and audit for network device maintenance, turning tribal runbooks into repeatable workflows — 60%+ operator efficiency gain."}
+  - {kicker: "platform", title: "Enterprise ingestion API platform", body: "One platform for client data coming into the firm. FIX, REST and BLPAPI run on shared infrastructure, with pub/sub subscription management, carrying 1M+ transactions a day at 60× the legacy throughput."}
+  - {kicker: "gateway", title: "Enterprise product gateway", body: "A separate system from the ingestion platform, taking about 10,000 compute-heavy requests a minute. Stabilized for memory use and availability, with asynchronous delivery for long-running requests. Token-based throttling and per-workflow, per-client rate limiting is in progress, as part of a long-term project to merge it with the ingestion platform into one."}
+  - {kicker: "observability", title: "Ingestion visibility layer", body: "Dashboards that show clients and internal teams how their data is flowing: latency patterns, error hotspots, per-client activity. Support escalations turned into people diagnosing things themselves."}
+  - {kicker: "framework", title: "DataMapper", body: "A configuration-based data dictionary for transforming and translating between sources. It handles 600+ requests per second and scales horizontally, so nobody writes adapters by hand."}
+  - {kicker: "self-service", title: "Middleware portal", body: "Gave application teams direct control over their own RabbitMQ and Kafka configuration, packaging and deployment, so the middleware team stopped being a bottleneck."}
+  - {kicker: "automation", title: "SIMN workflow engine", body: "Authoring, validation, execution and audit for network device maintenance. Tribal runbooks became repeatable workflows, with a 60%+ operator efficiency gain."}
 
 toolkit:
-  - ["languages", "Python · C++20 · TypeScript · JavaScript · Bash"]
-  - ["protocols", "FIX · REST / OpenAPI · BLPAPI · SSE"]
-  - ["middleware", "Kafka · RabbitMQ · Celery · SaltStack"]
-  - ["frameworks", "Flask · Django · React"]
-  - ["practice", "People-first leadership · API platform strategy · observability-driven design · AI-assisted engineering · TDD / BDD"]
+  - ["domains", "Real-time ingestion platforms · API platform strategy · observability · platform reliability · people-first engineering leadership"]
+  - ["tools and technologies", "Python · C++20 · TypeScript · JavaScript · Bash · Kafka / RabbitMQ · FIX · REST / OpenAPI · BLPAPI · SSE"]
+  - ["AI tooling", "Claude Code · agentic skills · LLM help with troubleshooting, test generation and log-based issue detection"]
 
 education:
   degrees:
@@ -161,7 +167,7 @@ education:
 contact:
   accepting: "leadership roles, advisory"
   heading: "Let's build something that scales past you."
-  lede: "Preferred transport is a LinkedIn direct message; email is accepted as a fallback. I also mentor engineers working on LLMs, distributed systems and platform engineering, and advise founders on API platform strategy, B2B integration workflows and reliability at scale."
+  lede: "The best way to reach me is a LinkedIn message; email works too. I also mentor engineers working on LLMs, distributed systems and platform engineering, and advise founders on API platform strategy, B2B integration workflows and reliability at scale."
   linkedin: "https://www.linkedin.com/in/hariprar"
   email: "hraman@cs.stonybrook.edu"
   github: "https://github.com/rhp4515"
