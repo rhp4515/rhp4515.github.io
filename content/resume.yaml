@@ -57,7 +57,7 @@ experience:
       start: "2022-03"
       end: null
       facts:
-        - ["scope", "Own the FIX, REST and BLPAPI ingestion platform that client trade and order workflows pass through to get into Bloomberg. It is client-facing and real-time, so correctness and reliability are not optional."]
+        - ["scope", "Own the FIX, REST and BLPAPI ingestion platform that client trade and order workflows pass through to get into Bloomberg, with end-to-end accountability for correctness, reliability and delivery. It is client-facing and real-time."]
         - ["impact[0]", "Led a multi-year migration of live client traffic that turned the platform into a pure infrastructure layer. Buyside and sellside ticketing logic moved to the teams that own those domains, the monolith became microservices, and clients saw no impact."]
         - ["impact[1]", "Re-architected trade and order ingestion, from 5 to 300 msg/s and from 50 to 1,000+ orders per basket. It now handles 1M+ transactions a day."]
         - ["impact[2]", "Saw a capacity gap coming and took on a second team before it hit. Added backpressure and client rate limiting to protect its real-time downstream systems, and made the case for more headcount by tying its roadmap to the org's API-first strategy."]
@@ -66,7 +66,8 @@ experience:
         - ["impact[5]", "Directed the Solaris to Linux migration at DR-1 with 99.9%+ uptime. Latency halved, releases went from monthly to weekly, and errors dropped 30%. Also one of the first to move my own apps from bare metal to VMs ahead of the cloud move."]
         - ["impact[6]", "Asked every engineer to build AI into their daily work, with a concrete plan for how. It is a big part of why the migration stayed on schedule despite work added along the way."]
         - ["impact[7]", "Every intern and co-op project I have sponsored has shipped to production and become a critical part of the pipeline. Examples: a traffic-capture system now used to stress-test new apps and decide which features to keep, a migration burndown widget for senior leadership, and a Flink pipeline (in progress) that tracks which fields clients use."]
-        - ["team", "10 engineers · 6 for 6 on team-matching hires · new grads on production work from day one, ramp-up cut from 3 months to 1 · TDD/BDD by default · three senior engineers now lead areas on their own"]
+        - ["impact[8]", "Grew three senior engineers into independent area leads, one now my technical lead and backup. On a flat two-level IC ladder, built their visibility through Tech Rep, guilds, internal talks and inner-sourcing."]
+        - ["team", "10 engineers · 6 for 6 on team-matching hires · new grads on production work from day one, ramp-up cut from 3 months to 1 · TDD/BDD by default"]
 
     - id: role-sse
       kind: role
@@ -149,10 +150,9 @@ work:
   - {kicker: "automation", title: "SIMN workflow engine", body: "Authoring, validation, execution and audit for network device maintenance. Tribal runbooks became repeatable workflows, with a 60%+ operator efficiency gain."}
 
 toolkit:
-  - ["languages", "Python · C++20 · TypeScript · JavaScript · Bash"]
-  - ["platform", "FIX · REST / OpenAPI · BLPAPI · SSE · Kafka · RabbitMQ"]
+  - ["domains", "Real-time ingestion platforms · API platform strategy · observability · platform reliability · people-first engineering leadership"]
+  - ["tools and technologies", "Python · C++20 · TypeScript · JavaScript · Bash · Kafka / RabbitMQ · FIX · REST / OpenAPI · BLPAPI · SSE"]
   - ["AI tooling", "Claude Code · agentic skills · LLM help with troubleshooting, test generation and log-based issue detection"]
-  - ["practice", "People-first leadership · API platform strategy · observability-driven design · TDD / BDD"]
 
 education:
   degrees:
