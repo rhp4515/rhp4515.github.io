@@ -89,25 +89,6 @@
         <hr>
 
         <section>
-            <h2>Education</h2>
-{% for degree in education.degrees %}
-            <div class="edu-entry">
-                <div class="row"><span class="bold">{{ degree.name }}</span></div>
-                <div class="edu-meta">{{ degree.meta }}</div>
-            </div>
-{% endfor %}
-        </section>
-
-        <section>
-            <h2>Technical Skills</h2>
-            <ul class="skills-list">
-{% for label, value in toolkit %}
-                <li><span class="bold">{{ label|capitalize }}:</span> {{ value|replace(' · ', ', ') }}</li>
-{% endfor %}
-            </ul>
-        </section>
-
-        <section>
             <h2>Work Experience</h2>
 {% for group in experience_groups %}
             <div class="company-group">
@@ -133,11 +114,30 @@
         </section>
 
         <section>
+            <h2>Technical Skills</h2>
+            <ul class="skills-list">
+{% for label, value in toolkit %}
+                <li><span class="bold">{{ label|capitalize }}:</span> {{ value|replace(' · ', ', ') }}</li>
+{% endfor %}
+            </ul>
+        </section>
+
+        <section>
             <h2>Research Experience</h2>
 {% for pub in education.publications %}
             <div class="publication">
                 <p><span class="bold">{{ pub.title }}</span></p>
                 <p class="muted">{{ pub.venue }}</p>
+            </div>
+{% endfor %}
+        </section>
+
+        <section>
+            <h2>Education</h2>
+{% for degree in education.degrees %}
+            <div class="edu-entry">
+                <div class="row"><span class="bold">{{ degree.name }}</span></div>
+                <div class="edu-meta">{{ degree.meta }}</div>
             </div>
 {% endfor %}
         </section>
