@@ -92,15 +92,6 @@
         </section>
 
         <section>
-            <h2>Skills</h2>
-            <ul class="skills-list">
-{% for label, value in toolkit %}
-                <li><span class="bold">{{ label[0]|upper }}{{ label[1:] }}:</span> {{ value|replace(' · ', ', ') }}</li>
-{% endfor %}
-            </ul>
-        </section>
-
-        <section>
             <h2>Education</h2>
 {% for degree in education.degrees %}
 {% set parts = degree.meta.split(' · ') %}
@@ -119,6 +110,15 @@
                 <p class="muted">{{ pub.venue }}</p>
             </div>
 {% endfor %}
+        </section>
+
+        <section>
+            <h2>Skills</h2>
+            <ul class="skills-list">
+{% for label, value in toolkit %}
+                <li><span class="bold">{{ label[0]|upper }}{{ label[1:] }}:</span> {{ value|replace(' · ', ', ') }}</li>
+{% endfor %}
+            </ul>
         </section>
 
         <footer class="resume-footer">
