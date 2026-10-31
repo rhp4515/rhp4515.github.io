@@ -39,7 +39,7 @@ pipeline:
     - {label: "uptime · DR-1", value: "99.9%"}
     - {label: "throughput vs legacy", value: "60×"}
     - {label: "release cadence", value: "bi-weekly"}
-    - {label: "team", value: "10"}
+    - {label: "team", value: "12"}
 
 experience:
   summary: "Returns the trace first, then each span with its impact as measured outcomes."
@@ -59,15 +59,16 @@ experience:
       facts:
         - ["scope", "Own the FIX, REST and BLPAPI ingestion platform that client trade and order workflows pass through to get into Bloomberg, with end-to-end accountability for correctness, reliability and delivery. It is client-facing and real-time."]
         - ["impact[0]", "Led a multi-year migration of live client traffic that turned the platform into a pure infrastructure layer. Buyside and sellside ticketing logic moved to the teams that own those domains, the monolith became microservices, and clients saw no impact."]
-        - ["impact[1]", "Re-architected trade and order ingestion, from 5 to 300 msg/s and from 50 to 1,000+ orders per basket. It now handles 1M+ transactions a day."]
+        - ["impact[1]", "Re-architected trade and order ingestion, from 5 to 300 msg/s and from 50 to 1,000+ orders per basket, at 1M+ transactions a day."]
         - ["impact[2]", "Saw a capacity gap coming and took on a second team before it hit. Added backpressure and client rate limiting to protect its real-time downstream systems, and made the case for more headcount by tying its roadmap to the org's API-first strategy."]
-        - ["impact[3]", "When several teams were each building their own SSE APIs, pushed for one shared Pub/Sub platform instead. We agreed on OpenAPI and Kafka contracts before writing code, so consumers could check them early."]
-        - ["impact[4]", "Made \"catch it before the client does\" the team's standard: consistent logging, health dashboards built from application and middleware metrics, AI-assisted issue detection, and a triage path where support handles what it can and a chatbot helps keep those issues off engineering."]
-        - ["impact[5]", "Directed the Solaris to Linux migration at DR-1 with 99.9%+ uptime. Latency halved, releases went from monthly to weekly, and errors dropped 30%. Also one of the first to move my own apps from bare metal to VMs ahead of the cloud move."]
-        - ["impact[6]", "Asked every engineer to build AI into their daily work, with a concrete plan for how. It is a big part of why the migration stayed on schedule despite work added along the way."]
-        - ["impact[7]", "Every intern and co-op project I have sponsored has shipped to production and become a critical part of the pipeline. Examples: a traffic-capture system now used to stress-test new apps and decide which features to keep, a migration burndown widget for senior leadership, and a Flink pipeline (in progress) that tracks which fields clients use."]
-        - ["impact[8]", "Grew three senior engineers into independent area leads, one now my technical lead and backup. On a flat two-level IC ladder, built their visibility through Tech Rep, guilds, internal talks and inner-sourcing."]
-        - ["team", "10 engineers · 6 for 6 on team-matching hires · new grads on production work from day one, ramp-up cut from 3 months to 1 · TDD/BDD by default"]
+        - ["impact[3]", "Own the enterprise product gateway, about 10,000 compute-heavy requests a minute. Helped the team stabilize it for memory use and high availability, with async delivery for long-running requests. Now building token-based throttling and rate limiting per workflow and client."]
+        - ["impact[4]", "When several teams were each building their own SSE APIs, pushed for one shared Pub/Sub platform instead. We agreed on OpenAPI and Kafka contracts before writing code, so consumers could check them early."]
+        - ["impact[5]", "Made \"catch it before the client does\" the team's standard: consistent logging, health dashboards from application and middleware metrics, AI-assisted issue detection, and a support-first triage path with a chatbot."]
+        - ["impact[6]", "Directed the Solaris to Linux migration at DR-1 with 99.9%+ uptime. Latency halved, releases went from monthly to weekly, and errors dropped 30%. Also one of the first to move my own apps from bare metal to VMs ahead of the cloud move."]
+        - ["impact[7]", "Asked every engineer to build AI into their daily work, with a concrete plan for how, which helped keep the migration on schedule."]
+        - ["impact[8]", "Every intern and co-op project I have sponsored has shipped to production: a traffic-capture system now used to stress-test new apps and decide which features to keep, a migration burndown widget for leadership, and a Flink field-usage pipeline (in progress)."]
+        - ["impact[9]", "Grew three senior engineers into independent area leads, one now my technical lead and backup. On a flat two-level IC ladder, built their visibility through Tech Rep, guilds, internal talks and inner-sourcing."]
+        - ["team", "12 engineers · 6 for 6 on team-matching hires · new grads on production work from day one, ramp-up cut from 3 months to 1 · TDD/BDD"]
 
     - id: role-sse
       kind: role
@@ -144,6 +145,7 @@ leadership:
 
 work:
   - {kicker: "platform", title: "Enterprise ingestion API platform", body: "One platform for client data coming into the firm. FIX, REST and BLPAPI run on shared infrastructure, with pub/sub subscription management, carrying 1M+ transactions a day at 60× the legacy throughput."}
+  - {kicker: "gateway", title: "Enterprise product gateway", body: "About 10,000 compute-heavy requests a minute, stabilized for memory use and availability, with asynchronous delivery for long-running requests. Token-based throttling and rate limiting, per workflow and per client, is in progress."}
   - {kicker: "observability", title: "Ingestion visibility layer", body: "Dashboards that show clients and internal teams how their data is flowing: latency patterns, error hotspots, per-client activity. Support escalations turned into people diagnosing things themselves."}
   - {kicker: "framework", title: "DataMapper", body: "A configuration-based data dictionary for transforming and translating between sources. It handles 600+ requests per second and scales horizontally, so nobody writes adapters by hand."}
   - {kicker: "self-service", title: "Middleware portal", body: "Gave application teams direct control over their own RabbitMQ and Kafka configuration, packaging and deployment, so the middleware team stopped being a bottleneck."}
